@@ -169,7 +169,7 @@ const Main:React.FC = () => {
 
             <Typography pt='20px' mb='20px' variant='h5' fontWeight='800' color='#002663'>CatBoost</Typography>
 
-            <img  src={Chip} alt='chip' className='chip'/>
+            <img style={{ width: '25px', height: '25px'}} src={Chip} alt='chip' className='chip'/>
 
           </Stack>
           
