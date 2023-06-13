@@ -1,0 +1,15 @@
+.logo{
+    width: 40px;
+}
+.Robot{
+    width: 400px;
+}
+.box{
+    background-image: url('../../assets/images/3d-robot-hand-background-ai-technology-side-view.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
