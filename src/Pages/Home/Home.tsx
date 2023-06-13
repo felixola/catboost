@@ -45,7 +45,7 @@ const Home: React.FC = () => {
             <Toolbar disableGutters >
               {/* Logo */}
 
-              <Stack direction='row' spacing={2} display='flex' alignItems='center' justifyContent='center'>
+              <Stack direction='row' spacing={1} display='flex' alignItems='center' justifyContent='center'>
               <img src={Logo} alt="logo" className='logo'/>
               <Typography variant='h5' fontWeight='800' color='#002663'>CatBoost</Typography>
               </Stack>
