@@ -167,10 +167,9 @@ const Questions: React.FC = () => {
                   // onChange={handleChange}
                   defaultValue='Open' >
                   <MenuItem value="">Male</MenuItem>
-                  <MenuItem value={2}>Female</MenuItem>
+                  <MenuItem value={10}>Female</MenuItem>
                 </Select>
               </Stack>
-                
               </FormControl>
 
                {/*Tenure of customer */}
@@ -214,8 +213,8 @@ const Questions: React.FC = () => {
                   // onChange={handleChange}
                   defaultValue='Open' >
                   <MenuItem value="">3m</MenuItem>
-                  <MenuItem value={2}>3m-15m</MenuItem>
-                  <MenuItem value={3}>15m</MenuItem>
+                  <MenuItem value={10}>3m-15m</MenuItem>
+                  <MenuItem value={20}>15m</MenuItem>
                   
                 </Select>
               </Stack>
