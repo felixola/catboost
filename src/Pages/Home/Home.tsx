@@ -55,7 +55,7 @@ const Home: React.FC = () => {
 
           </Container> 
 
-          </Box>
+        </Box>
 
           <Divider orientation='horizontal'/>
 

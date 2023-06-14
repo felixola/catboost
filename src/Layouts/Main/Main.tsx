@@ -7,7 +7,8 @@ import Theme from '../../Components/Theme';
 import ApiIcon from '@mui/icons-material/Api';
 import DescriptionIcon from '@mui/icons-material/Description';
 import GroupIcon from '@mui/icons-material/Group';
-import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import { Link } from "react-router-dom";
 import './Main.css';
 import Robot from '../../assets/gifs/Robot_face.gif'
 import Chip from '../../assets/images/chip.png';
@@ -18,6 +19,7 @@ interface Item {
     id: number;
     name: string;
     icons?: any;
+    links: string;
   }
   
   export const items: Array<Item> = [
@@ -25,6 +27,7 @@ interface Item {
       id: 1,
       name: "Documentation", 
       icons: (<DescriptionIcon />),
+      links: "/doc",
      
     },
   
@@ -32,11 +35,13 @@ interface Item {
       id: 2,
       name: "Api", 
       icons: (<ApiIcon />),
+      links: "/api",
     },
     {
       id: 3,
       name: "Students", 
       icons: (<GroupIcon />),
+      links: "/student",
     },
   
   ];
@@ -58,7 +63,7 @@ interface Item {
   });
 
 
-  const Download = styled(Button)({
+  const Upload = styled(Button)({
     border: '0.5px solid #575757',
     textTransform: 'none',
     fontSize: '14px',
@@ -102,7 +107,7 @@ const Main:React.FC = () => {
 
             {items.map((sides) => (   
 
-              <MenuItem icon={ sides.icons} style={{ color: '#575757'}}>
+              <MenuItem  component={<Link to={sides.links} className="link" />} icon={ sides.icons} style={{ color: '#575757'}}>
 
                 <Typography color='#575757' fontWeight='400' fontSize='15px'>
 
@@ -121,13 +126,13 @@ const Main:React.FC = () => {
             {/* Download button */}
             <Box mt='40px' pl='20px'>
 
-              <Download variant='outlined'  startIcon={<DownloadIcon />}> DOWNLOAD</Download>
+              <Upload variant='outlined'  startIcon={<UploadIcon />}>UPLOAD</Upload>
 
             </Box>
 
             <Box mt='40px' width='100%' display='flex' alignItems='center' justifyContent='center'>
               
-             <img src={Robot} style={{ width: '100px', height: '100px'}} alt="robot" />
+              <img src={Robot} style={{ width: '100px', height: '100px'}} alt="robot" />
 
             </Box>
 
@@ -146,15 +151,15 @@ const Main:React.FC = () => {
 
           <Box sx={{ display:{md: 'none', xs: 'flex'}, width: '100%', height: 'auto', background: '#FFFFFF',  zIndex: 3, position: 'sticky', top: '0px', }}>
 
-<Container maxWidth='xl'>
+            <Container maxWidth='xl'>
 
-  <Toolbar disableGutters  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
-    {/* Logo */}
-    <Typography pt='5px' variant='h5' fontWeight='800' color='#002663'> AI MODEL</Typography>
+              <Toolbar disableGutters  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  }}>
+                {/* Logo */}
+                <Typography pt='5px' variant='h5' fontWeight='800' color='#002663'> AI MODEL</Typography>
 
-    </Toolbar>
+                </Toolbar>
 
-</Container>
+            </Container>
 
 </Box>
 
