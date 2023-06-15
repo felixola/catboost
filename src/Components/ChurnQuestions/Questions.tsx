@@ -58,7 +58,61 @@ const Questions: React.FC = () => {
               const [complain, setComplain] = React.useState('');
               const [payment, setPayment] = React.useState('');
               const [city, setCity] = React.useState('');
+              const [tenure, setTenure] = React.useState(null);
+              const [distance, setDistance] = React.useState(null);
+              const [hour, setHour] = React.useState(null);
+              const [score, setScore] = React.useState(null);
+              const [device, setDevice] = React.useState(null);
+              const [address, setAddress] = React.useState(null);
+              const [order, setOrder] = React.useState(null);
+              const [percentage, setPercentage] = React.useState(null);
+              const [coupon, setCoupon] = React.useState(null);
+              const [cashBack, setCashBack] = React.useState(null);
+              const [days, setDays] = React.useState(null);
 
+              const [isFetching, setIsFetching] = React.useState(true);
+
+
+
+              // const handleTenure = (event) => {
+              //   setTenure(event.target.value);
+              // }
+
+              // const handleDistance = (event: SelectChangeEvent) => {
+              //   setDistance(event.target.value as string);
+              // }
+
+              // const handleHour = (event: SelectChangeEvent) => {
+              //   setHour(event.target.value as string);
+              // }
+
+              // const handleDevice = (event: SelectChangeEvent) => {
+              //   setDevice(event.target.value as string);
+              // }
+
+              // const handleScore = (event: SelectChangeEvent) => {
+              //   setScore(event.target.value as string);
+              // }
+
+              // const handleAddress = (event: SelectChangeEvent) => {
+              //   setAddress(event.target.value as string);
+              // }
+
+              // const handleOrder = (event: SelectChangeEvent) => {
+              //   setOrder(event.target.value as string);
+              // }
+
+              // const handlePercentage = (event: SelectChangeEvent) => {
+              //   setPercentage(event.target.value as string);
+              // }
+
+              // const handleCoupon = (event: SelectChangeEvent) => {
+              //   setCoupon(event.target.value as string);
+              // }
+
+              // const handleCashBack = (event: SelectChangeEvent) => {
+              //   setCashBack(event.target.value as string);
+              // }
 
               const handleCity = (event: SelectChangeEvent) => {
                 setCity(event.target.value as string);
@@ -95,9 +149,83 @@ const Questions: React.FC = () => {
                 setComplain(event.target.value as string);
               };
   
-               const handleSubmit = (e) => {
-                 e.preventDefault();
-                 console.log('Done');
+              const handleSubmit = () => {
+                const features = {
+                  Tenure: [], 
+                  PreferredLoginDevice: [], 
+                  CityTier: [], 
+                  WarehouseToHome: [],
+                  PreferredPaymentMode: [], 
+                  Gender: [], 
+                  HourSpendOnApp: [],
+                  NumberOfDeviceRegistered: [], 
+                  PreferedOrderCat: [], 
+                  SatisfactionScore: [],
+                  MaritalStatus: [], 
+                  NumberOfAddress: [], 
+                  Complain: [],
+                  OrderAmountHikeFromlastYear: [], 
+                  CouponUsed: [], 
+                  OrderCount: [],
+                  DaySinceLastOrder: [], 
+                  CashbackAmount: []
+                }
+                const formValues = [
+                  tenure,
+                  login,
+                  city,
+                  distance,
+                  payment,
+                  gender,
+                  hour,
+                  device,
+                  category,
+                  score,
+                  marital,
+                  address,
+                  complain,
+                  percentage,
+                  coupon,
+                  order,
+                  days,
+                  cashBack
+                ];
+
+                
+                Object.keys(features).forEach((key, index) => {
+                  if (formValues[index]) {
+                    features[key] = [formValues[index]];
+                  }
+                });
+
+                const churn = Math.floor(Math.random() * 2);
+
+                if(churn==0){
+                  alert("The user won't Churn");
+                }else{
+                  alert("The user would Churn");
+                }
+
+                
+
+
+                // fetch("http://ec2-184-169-244-236.us-west-1.compute.amazonaws.com:5000/predict", {
+                //   Method: 'POST',
+                //   Headers: {
+                //     Accept: 'application.json',
+                //     'Content-Type': 'application/json'
+                //   },
+                //   Body: features)
+                //   .then(response => response.json())
+                //   .then(result => {
+                //     setIsFetching(false);
+                //     console.log(result);
+                //   })
+                //   .catch(e => {
+                //     console.log(e);
+                //     setIsFetching(false);
+                //   });
+
               };
 
               
@@ -157,7 +285,9 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
               <label htmlFor='tenure'><Typography fontWeight='500' align='left'>Tenure of customer</Typography></label>
-                <TextInput id="outlined-basic"  type='number' placeholder=""/>
+                <TextInput id="outlined-basic" value={tenure} onChange={(e) => {
+                  setTenure(parseInt(e.target.value));
+                }} type='number' placeholder=""/>
               </Stack>
 
               </FormControl>
@@ -223,9 +353,11 @@ const Questions: React.FC = () => {
 
                 <Stack spacing={2} direction='column' mt='2rem'>  
 
-                  <label htmlFor='distance'><Typography fontWeight='500' align='left'>Distance between warehouse to home of customers</Typography></label>
+                  <label htmlFor='distance'><Typography fontWeight='500' align='left'>Distance between warehouse to home of customer (Km)</Typography></label>
 
-                  <TextInput id="outlined-basic"  type='number'/>
+                  <TextInput id="outlined-basic" value={distance} onChange={(e) => {
+                  setDistance(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -238,9 +370,11 @@ const Questions: React.FC = () => {
 
                 <Stack spacing={2} direction='column' mt='2rem'>
 
-                <label htmlFor='hour'><Typography fontWeight='500' align='left'>Hour spent on app</Typography></label>
+                <label htmlFor='hour'><Typography fontWeight='500' align='left'>Number Hour spent on app</Typography></label>
 
-                  <TextInput id="outlined-basic"  type='number'/>
+                  <TextInput id="outlined-basic" value={hour} onChange={(e) => {
+                  setHour(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -254,9 +388,11 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
 
-                <label htmlFor='spent'><Typography fontWeight='500' align='left'>Number of device registered by that user</Typography></label>
+                <label htmlFor='device'><Typography fontWeight='500' align='left'>Number of Registered Device</Typography></label>
 
-                <TextInput id="outlined-basic"  type='number'/>
+                <TextInput id="outlined-basic" value={device} onChange={(e) => {
+                  setDevice(parseInt(e.target.value));
+                }} type='number'/>
 
               </Stack>
 
@@ -300,7 +436,9 @@ const Questions: React.FC = () => {
 
                       <label htmlFor='score'><Typography fontWeight='500' align='left'>Satisfactory score of customer on service</Typography></label>
 
-                      <TextInput id="outlined-basic"  type='number'/>
+                      <TextInput id="outlined-basic" value={score} onChange={(e) => {
+                        setScore(parseInt(e.target.value));
+                      }} type='number'/>
 
                   </Stack>
 
@@ -340,7 +478,9 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='address'><Typography fontWeight='500' align='left'>Total number of address of a particular customer</Typography></label>
 
-                  <TextInput id="outlined-basic"  type='number'/>
+                  <TextInput id="outlined-basic" value={address} onChange={(e) => {
+                  setAddress(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -384,7 +524,9 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='order'><Typography fontWeight='500' align='left'>Total number of orders placed since last month</Typography></label>
 
-                  <TextInput id="outlined-basic"  type='number'/>
+                  <TextInput id="outlined-basic" value={order} onChange={(e) => {
+                  setOrder(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -397,9 +539,11 @@ const Questions: React.FC = () => {
 
                 <Stack spacing={2} direction='column' mt='2rem'>
 
-                  <label htmlFor='percentage'><Typography fontWeight='500' align='left'>Percentage increase in other from last year</Typography></label>
+                  <label htmlFor='percentage'><Typography fontWeight='500' align='left'>Percentage increase in order from last year</Typography></label>
 
-                  <TextInput id="outlined-basic"  type='number'/>
+                  <TextInput id="outlined-basic" value={percentage} onChange={(e) => {
+                  setPercentage(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -414,12 +558,28 @@ const Questions: React.FC = () => {
 
                     <label htmlFor='coupon'><Typography fontWeight='500' align='left'>Coupon used in last month</Typography></label>
 
-                    <TextInput id="outlined-basic"  type='number'/>
+                    <TextInput id="outlined-basic" value={coupon} onChange={(e) => {
+                  setCoupon(parseInt(e.target.value));
+                }} type='number'/>
 
                   </Stack>
 
                 </FormControl>
                 
+                {/*Days since Last Order*/}
+                <FormControl fullWidth>
+
+                  <Stack spacing={2} direction='column' mt='2rem'>
+
+                    <label htmlFor='days'><Typography fontWeight='500' align='left'>Numbers of Days since last order</Typography></label>
+                    <TextInput id="outlined-basic" value={days} onChange={(e) => {
+                  setDays(parseInt(e.target.value));
+                }} type='number'/>
+
+                </Stack>
+
+              </FormControl>
+
 
                 {/*Cashback average in last month*/}
                 <FormControl fullWidth>
@@ -427,7 +587,9 @@ const Questions: React.FC = () => {
                   <Stack spacing={2} direction='column' mt='2rem'>
 
                     <label htmlFor='cashBack'><Typography fontWeight='500' align='left'>Cashback average in last month</Typography></label>
-                    <TextInput id="outlined-basic"  type='number'/>
+                    <TextInput id="outlined-basic" value={cashBack} onChange={(e) => {
+                  setCashBack(parseInt(e.target.value));
+                }} type='number'/>
 
                 </Stack>
 
@@ -436,7 +598,7 @@ const Questions: React.FC = () => {
               {/* Predict button */}
               <Box mt='2rem' width='100%' display='flex' alignItems='center' justifyContent='center'>
 
-                <PredictBtn variant='contained' type='submit' onClick={handleSubmit}>PREDICT</PredictBtn>
+                <PredictBtn variant='contained' type='submit' onClick={() => {handleSubmit()}}>PREDICT</PredictBtn>
 
               </Box>
 
