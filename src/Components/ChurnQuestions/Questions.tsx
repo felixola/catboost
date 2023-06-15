@@ -152,7 +152,7 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
               <label htmlFor='tenure'><Typography fontWeight='500' align='left'>Tenure of customer</Typography></label>
-                <TextInput id="outlined-basic"  type='number' placeholder="Tenure of Customer in Years"/>
+                <TextInput id="outlined-basic"  type='number' placeholder=""/>
               </Stack>
 
               </FormControl>
