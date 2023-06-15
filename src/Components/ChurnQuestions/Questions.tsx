@@ -4,6 +4,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from '../Theme';
+import axios from "axios";
 
 const PredictBtn = styled(Button)({
   backgroundColor: '#002663',
@@ -58,17 +59,17 @@ const Questions: React.FC = () => {
               const [complain, setComplain] = React.useState('');
               const [payment, setPayment] = React.useState('');
               const [city, setCity] = React.useState('');
-              const [tenure, setTenure] = React.useState(null);
-              const [distance, setDistance] = React.useState(null);
-              const [hour, setHour] = React.useState(null);
-              const [score, setScore] = React.useState(null);
-              const [device, setDevice] = React.useState(null);
-              const [address, setAddress] = React.useState(null);
-              const [order, setOrder] = React.useState(null);
-              const [percentage, setPercentage] = React.useState(null);
-              const [coupon, setCoupon] = React.useState(null);
-              const [cashBack, setCashBack] = React.useState(null);
-              const [days, setDays] = React.useState(null);
+              const [tenure, setTenure] = React.useState<number | undefined>(0);
+              const [distance, setDistance] = React.useState<number | undefined>(0);
+              const [hour, setHour] = React.useState<number | undefined>(0);
+              const [score, setScore] = React.useState<number | undefined>(0);
+              const [device, setDevice] = React.useState<number | undefined>(0);
+              const [address, setAddress] = React.useState<number | undefined>(0);
+              const [order, setOrder] = React.useState<number | undefined>(0);
+              const [percentage, setPercentage] = React.useState<number | undefined>(0);
+              const [coupon, setCoupon] = React.useState<number | undefined>(0);
+              const [cashBack, setCashBack] = React.useState<number | undefined>(0);
+              const [days, setDays] = React.useState<number | undefined>(0);
 
               const [isFetching, setIsFetching] = React.useState(true);
 
@@ -204,9 +205,11 @@ const Questions: React.FC = () => {
                   alert("The user won't Churn");
                 }else{
                   alert("The user would Churn");
-                }
+                };
 
-                
+                axios.post("http://ec2-184-169-244-236.us-west-1.compute.amazonaws.com:5000/predict", features).then((response) => {
+                  console.log(response.status, response.data);
+                });
 
 
                 // fetch("http://ec2-184-169-244-236.us-west-1.compute.amazonaws.com:5000/predict", {
@@ -215,9 +218,9 @@ const Questions: React.FC = () => {
                 //     Accept: 'application.json',
                 //     'Content-Type': 'application/json'
                 //   },
-                //   Body: features)
-                //   .then(response => response.json())
-                //   .then(result => {
+                //   Body: features
+                //   ).then(response => response.json())
+                // .then(result => {
                 //     setIsFetching(false);
                 //     console.log(result);
                 //   })
@@ -285,7 +288,7 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
               <label htmlFor='tenure'><Typography fontWeight='500' align='left'>Tenure of customer</Typography></label>
-                <TextInput id="outlined-basic" value={tenure} onChange={(e) => {
+                <TextInput id="outlined-basic" value={tenure} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setTenure(parseInt(e.target.value));
                 }} type='number' placeholder=""/>
               </Stack>
@@ -355,7 +358,7 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='distance'><Typography fontWeight='500' align='left'>Distance between warehouse to home of customer (Km)</Typography></label>
 
-                  <TextInput id="outlined-basic" value={distance} onChange={(e) => {
+                  <TextInput id="outlined-basic" value={distance} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setDistance(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -372,7 +375,7 @@ const Questions: React.FC = () => {
 
                 <label htmlFor='hour'><Typography fontWeight='500' align='left'>Number Hour spent on app</Typography></label>
 
-                  <TextInput id="outlined-basic" value={hour} onChange={(e) => {
+                  <TextInput id="outlined-basic" value={hour} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setHour(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -390,7 +393,7 @@ const Questions: React.FC = () => {
 
                 <label htmlFor='device'><Typography fontWeight='500' align='left'>Number of Registered Device</Typography></label>
 
-                <TextInput id="outlined-basic" value={device} onChange={(e) => {
+                <TextInput id="outlined-basic" value={device} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setDevice(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -436,7 +439,7 @@ const Questions: React.FC = () => {
 
                       <label htmlFor='score'><Typography fontWeight='500' align='left'>Satisfactory score of customer on service</Typography></label>
 
-                      <TextInput id="outlined-basic" value={score} onChange={(e) => {
+                      <TextInput id="outlined-basic" value={score} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setScore(parseInt(e.target.value));
                       }} type='number'/>
 
@@ -478,7 +481,7 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='address'><Typography fontWeight='500' align='left'>Total number of address of a particular customer</Typography></label>
 
-                  <TextInput id="outlined-basic" value={address} onChange={(e) => {
+                  <TextInput id="outlined-basic" value={address} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setAddress(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -524,7 +527,7 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='order'><Typography fontWeight='500' align='left'>Total number of orders placed since last month</Typography></label>
 
-                  <TextInput id="outlined-basic" value={order} onChange={(e) => {
+                  <TextInput id="outlined-basic" value={order} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setOrder(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -541,7 +544,7 @@ const Questions: React.FC = () => {
 
                   <label htmlFor='percentage'><Typography fontWeight='500' align='left'>Percentage increase in order from last year</Typography></label>
 
-                  <TextInput id="outlined-basic" value={percentage} onChange={(e) => {
+                  <TextInput id="outlined-basic" value={percentage} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setPercentage(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -558,7 +561,7 @@ const Questions: React.FC = () => {
 
                     <label htmlFor='coupon'><Typography fontWeight='500' align='left'>Coupon used in last month</Typography></label>
 
-                    <TextInput id="outlined-basic" value={coupon} onChange={(e) => {
+                    <TextInput id="outlined-basic" value={coupon} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setCoupon(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -572,7 +575,7 @@ const Questions: React.FC = () => {
                   <Stack spacing={2} direction='column' mt='2rem'>
 
                     <label htmlFor='days'><Typography fontWeight='500' align='left'>Numbers of Days since last order</Typography></label>
-                    <TextInput id="outlined-basic" value={days} onChange={(e) => {
+                    <TextInput id="outlined-basic" value={days} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setDays(parseInt(e.target.value));
                 }} type='number'/>
 
@@ -587,7 +590,7 @@ const Questions: React.FC = () => {
                   <Stack spacing={2} direction='column' mt='2rem'>
 
                     <label htmlFor='cashBack'><Typography fontWeight='500' align='left'>Cashback average in last month</Typography></label>
-                    <TextInput id="outlined-basic" value={cashBack} onChange={(e) => {
+                    <TextInput id="outlined-basic" value={cashBack} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setCashBack(parseInt(e.target.value));
                 }} type='number'/>
 
