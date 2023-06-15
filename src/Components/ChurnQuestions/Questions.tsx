@@ -56,6 +56,19 @@ const Questions: React.FC = () => {
               const [category, setCategory] = React.useState('');
               const [marital, setMarital] = React.useState('');
               const [complain, setComplain] = React.useState('');
+              const [payment, setPayment] = React.useState('');
+              const [city, setCity] = React.useState('');
+
+
+              const handleCity = (event: SelectChangeEvent) => {
+                setCity(event.target.value as string);
+              }
+
+
+              const handlePayment = (event: SelectChangeEvent) => {
+                setPayment(event.target.value as string);
+              };
+
             
 
               const handleChange = (event: SelectChangeEvent) => {
@@ -102,8 +115,8 @@ const Questions: React.FC = () => {
                   displayEmpty
                   sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
                   size='small'>
-                  <MenuItem value="">Mobile</MenuItem>
-                  <MenuItem value={2}>Computer</MenuItem>
+                  <MenuItem value="Phone">Phone</MenuItem>
+                  <MenuItem value="Computer">Computer</MenuItem>
                 </Select>
               </Stack>
 
@@ -125,8 +138,8 @@ const Questions: React.FC = () => {
                         sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
                         size='small'
                         defaultValue='Open' >
-                        <MenuItem value="">Male</MenuItem>
-                        <MenuItem value={10}>Female</MenuItem>
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
 
                       </Select>
 
@@ -139,7 +152,7 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
               <label htmlFor='tenure'><Typography fontWeight='500' align='left'>Tenure of customer</Typography></label>
-                <TextInput id="outlined-basic"  type='number'/>
+                <TextInput id="outlined-basic"  type='number' placeholder="Tenure of Customer in Years"/>
               </Stack>
 
               </FormControl>
@@ -148,23 +161,54 @@ const Questions: React.FC = () => {
               {/* City tier (size of the city */}
               <FormControl fullWidth>
 
-              <Stack spacing={2} direction='column' mt='2rem'>
-              <label htmlFor='city'><Typography fontWeight='500' align='left'>City tier (size of the city)</Typography></label>
-              <TextInput id="outlined-basic"  type='number'/>
-  
-              </Stack>
+                  <Stack spacing={2} direction='column' mt='2rem'>
+
+                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>Gender</Typography></label>
+
+                      <Select
+                        id="demo-simple-select"
+                        value={city}
+                        onChange={handleCity}
+                        displayEmpty
+                        sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
+                        size='small'
+                        defaultValue='Open' >
+                        <MenuItem value="150k to 3 mln">15,000 to 3 million</MenuItem>
+                        <MenuItem value="3 to 15 mln">3 million to 15 million</MenuItem>
+                        <MenuItem value="over 15 mln">Over 15 million</MenuItem>
+
+                      </Select>
+
+                    </Stack>
 
               </FormControl>
 
              
 
               {/* Preferred payment method */}
-
               <FormControl fullWidth>
-              <Stack spacing={2} direction='column' mt='2rem'>
-              <label htmlFor='payment'><Typography fontWeight='500' align='left'>Preferred payment method</Typography></label>
-              <TextInput id="outlined-basic"  type='number'/>
-              </Stack>
+
+                  <Stack spacing={2} direction='column' mt='2rem'>
+
+                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>Gender</Typography></label>
+
+                      <Select
+                        id="demo-simple-select"
+                        value={payment}
+                        onChange={handlePayment}
+                        displayEmpty
+                        sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
+                        size='small'
+                        defaultValue='Open' >
+                        <MenuItem value="Debit Card">Debit Card</MenuItem>
+                        <MenuItem value="Credit Card">Credit Card</MenuItem>
+                        <MenuItem value="E wallet">E wallet</MenuItem>
+                        <MenuItem value="UPI">UPI</MenuItem>
+                        <MenuItem value="Cash on Delivery">Cash on Delivery</MenuItem>
+                      </Select>
+
+                    </Stack>
+
               </FormControl>
 
               
@@ -230,11 +274,11 @@ const Questions: React.FC = () => {
                         size='small'
                         // onChange={handleChange}
                         defaultValue='Open' >
-                        <MenuItem value="">Mobile phone</MenuItem>
-                        <MenuItem value={20}>Laptop and accessory</MenuItem>
-                        <MenuItem value={30}>Grocery</MenuItem>
-                        <MenuItem value={40}>Fashion</MenuItem>
-                        <MenuItem value={50}>Others</MenuItem>
+                        <MenuItem value="Mobile Phone">Mobile phone</MenuItem>
+                        <MenuItem value="Laptop and Accessory">Laptop and accessory</MenuItem>
+                        <MenuItem value="Grocery">Grocery</MenuItem>
+                        <MenuItem value="Fashion">Fashion</MenuItem>
+                        <MenuItem value="Others">Others</MenuItem>
                         
                       </Select>
                       
@@ -274,8 +318,8 @@ const Questions: React.FC = () => {
                       size='small'
                       defaultValue='Open' >
                       <MenuItem value="">Single</MenuItem>
-                      <MenuItem value={20}>Married</MenuItem>
-                      <MenuItem value={30}>Divorce</MenuItem>
+                      <MenuItem value="Married">Married</MenuItem>
+                      <MenuItem value="Divorced">Divorced</MenuItem>
                       
                     </Select>
                     
@@ -305,6 +349,7 @@ const Questions: React.FC = () => {
                 <Stack spacing={2} direction='column' mt='2rem'>
 
                   <label htmlFor='complain'><Typography fontWeight='500' align='left'>Any complain raised in the last month</Typography></label>
+
                     <Select
                       id="demo-simple-select"
                       value={complain}
@@ -313,8 +358,10 @@ const Questions: React.FC = () => {
                       sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
                       size='small'
                       defaultValue='Open' >
-                      <MenuItem value="">Yes</MenuItem>
-                      <MenuItem value={20}>No</MenuItem>
+                        
+                      <MenuItem value={1}>Yes</MenuItem>
+
+                      <MenuItem value={0}>No</MenuItem>
                       
                     </Select>
 
