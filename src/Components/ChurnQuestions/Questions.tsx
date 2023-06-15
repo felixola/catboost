@@ -94,6 +94,11 @@ const Questions: React.FC = () => {
               const handleComplain = (event: SelectChangeEvent) => {
                 setComplain(event.target.value as string);
               };
+  
+               const handleSubmit = (e) => {
+                 e.preventDefault();
+                 console.log('Done');
+              };
 
               
 
@@ -431,7 +436,7 @@ const Questions: React.FC = () => {
               {/* Predict button */}
               <Box mt='2rem' width='100%' display='flex' alignItems='center' justifyContent='center'>
 
-                <PredictBtn variant='contained' type='submit'>PREDICT</PredictBtn>
+                <PredictBtn variant='contained' type='submit' onClick={handleSubmit}>PREDICT</PredictBtn>
 
               </Box>
 
