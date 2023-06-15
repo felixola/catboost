@@ -56,6 +56,19 @@ const Questions: React.FC = () => {
               const [category, setCategory] = React.useState('');
               const [marital, setMarital] = React.useState('');
               const [complain, setComplain] = React.useState('');
+              const [payment, setPayment] = React.useState('');
+              const [city, setCity] = React.useState('');
+
+
+              const handleCity = (event: SelectChangeEvent) => {
+                setCity(event.target.value as string);
+              }
+
+
+              const handlePayment = (event: SelectChangeEvent) => {
+                setPayment(event.target.value as string);
+              };
+
             
 
               const handleChange = (event: SelectChangeEvent) => {
@@ -305,8 +318,8 @@ const Questions: React.FC = () => {
                       size='small'
                       defaultValue='Open' >
                       <MenuItem value="">Single</MenuItem>
-                      <MenuItem value={20}>Married</MenuItem>
-                      <MenuItem value={30}>Divorce</MenuItem>
+                      <MenuItem value="Married">Married</MenuItem>
+                      <MenuItem value="Divorced">Divorced</MenuItem>
                       
                     </Select>
                     
@@ -336,6 +349,7 @@ const Questions: React.FC = () => {
                 <Stack spacing={2} direction='column' mt='2rem'>
 
                   <label htmlFor='complain'><Typography fontWeight='500' align='left'>Any complain raised in the last month</Typography></label>
+
                     <Select
                       id="demo-simple-select"
                       value={complain}
@@ -344,8 +358,10 @@ const Questions: React.FC = () => {
                       sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
                       size='small'
                       defaultValue='Open' >
-                      <MenuItem value="">Yes</MenuItem>
-                      <MenuItem value={20}>No</MenuItem>
+                        
+                      <MenuItem value={1}>Yes</MenuItem>
+
+                      <MenuItem value={0}>No</MenuItem>
                       
                     </Select>
 

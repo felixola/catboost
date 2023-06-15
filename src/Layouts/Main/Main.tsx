@@ -8,7 +8,13 @@ import ApiIcon from '@mui/icons-material/Api';
 import DescriptionIcon from '@mui/icons-material/Description';
 import GroupIcon from '@mui/icons-material/Group';
 import UploadIcon from '@mui/icons-material/Upload';
-import { Link } from "react-router-dom";
+import BusinessIcon from '@mui/icons-material/Business';
+// import Home from '../../Pages/Home/Home';
+import Doc from '../../Pages/Documentation/Doc';
+import Api from '../../Pages/Apis/Api';
+import Business from '../../Pages/Business/Business';
+import Student from '../../Pages/Students/Student';
+import { Routes, Route, Link } from "react-router-dom";
 import './Main.css';
 import Robot from '../../assets/gifs/Robot_face.gif'
 import Chip from '../../assets/images/chip.png';
@@ -42,6 +48,13 @@ interface Item {
       name: "Students", 
       icons: (<GroupIcon />),
       links: "/student",
+    },
+
+    {
+      id: 4,
+      name: "Business", 
+      icons: (<BusinessIcon />),
+      links: "/Business",
     },
   
   ];
@@ -193,7 +206,16 @@ const Main:React.FC = () => {
 
         <Divider  orientation='horizontal' variant='middle'  sx={{marginTop: '20px'}}/>
 
-            <Questions />
+                <Routes>
+
+                  <Route path="/" element={<Main />} />
+                  <Route path="doc" element={<Doc />} />
+                  <Route path="api" element={<Api />} />
+                  <Route path="student" element={<Student />} />
+                  <Route path="business" element={<Business />} />
+                  <Route path="questions" element={<Questions />} />
+
+                </Routes>
      
                   </section>
                 

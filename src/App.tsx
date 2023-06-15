@@ -6,6 +6,7 @@ import Main from './Layouts/Main/Main';
 import Api from './Pages/Apis/Api';
 import Doc from './Pages/Documentation/Doc';
 import Student from './Pages/Students/Student';
+import Business from './Pages/Business/Business';
 
 
 
@@ -14,6 +15,8 @@ function App() {
   return (
 
     <Router>
+
+      <Main />
 
       <Routes>
 
