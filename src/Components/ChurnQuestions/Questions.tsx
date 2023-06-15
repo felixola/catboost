@@ -163,7 +163,7 @@ const Questions: React.FC = () => {
 
                   <Stack spacing={2} direction='column' mt='2rem'>
 
-                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>Gender</Typography></label>
+                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>City Tier</Typography></label>
 
                       <Select
                         id="demo-simple-select"
@@ -190,7 +190,7 @@ const Questions: React.FC = () => {
 
                   <Stack spacing={2} direction='column' mt='2rem'>
 
-                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>Gender</Typography></label>
+                    <label htmlFor='gender'><Typography fontWeight='500' align='left'>Preferred Payment method</Typography></label>
 
                       <Select
                         id="demo-simple-select"
@@ -249,7 +249,7 @@ const Questions: React.FC = () => {
 
               <Stack spacing={2} direction='column' mt='2rem'>
 
-                <label htmlFor='spent'><Typography fontWeight='500' align='left'>Hour spent on app</Typography></label>
+                <label htmlFor='spent'><Typography fontWeight='500' align='left'>Number of device registered by that user</Typography></label>
 
                 <TextInput id="outlined-basic"  type='number'/>
 
@@ -358,7 +358,7 @@ const Questions: React.FC = () => {
                       sx={{ width: '100%', margin: 0, height: '50px', textAlign: 'left'}}
                       size='small'
                       defaultValue='Open' >
-                        
+
                       <MenuItem value={1}>Yes</MenuItem>
 
                       <MenuItem value={0}>No</MenuItem>

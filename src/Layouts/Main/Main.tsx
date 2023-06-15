@@ -13,6 +13,7 @@ import BusinessIcon from '@mui/icons-material/Business';
 import Doc from '../../Pages/Documentation/Doc';
 import Api from '../../Pages/Apis/Api';
 import Business from '../../Pages/Business/Business';
+import Home from '../../Pages/Home/Home';
 import Student from '../../Pages/Students/Student';
 import { Routes, Route, Link } from "react-router-dom";
 import './Main.css';
@@ -208,12 +209,12 @@ const Main:React.FC = () => {
 
                 <Routes>
 
-                  <Route path="/" element={<Main />} />
+                  <Route path="/" element={<Questions />} />
                   <Route path="doc" element={<Doc />} />
                   <Route path="api" element={<Api />} />
                   <Route path="student" element={<Student />} />
                   <Route path="business" element={<Business />} />
-                  <Route path="questions" element={<Questions />} />
+                  {/* <Route path="questions" element={<Questions />} /> */}
 
                 </Routes>
      
